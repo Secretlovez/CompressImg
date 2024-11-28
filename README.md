@@ -10,10 +10,10 @@
 
 ## 使用方法
 
-赋值生成运行程序，然后输入要压缩的图片路径，未赋值，则遍历当前目录下所有jpg\png格式的图片进行压缩。
+运行程序赋权限，后输入要压缩的图片路径。未输入，则遍历当前目录下所有jpg\png格式的图片进行压缩。
 ```sh
 chmod 777 -R ./compressImg
-./compressImg -dir /path/to/directory
+./compressImg  /path/to/directory
 ```
 or
 ```sh
