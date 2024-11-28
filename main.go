@@ -35,6 +35,11 @@ func main() {
 		if err != nil {
 			return err
 		}
+		// 跳过 compress_file 目录
+		if info.IsDir() && info.Name() == "compress_file" {
+			return filepath.SkipDir
+		}
+
 		if !info.IsDir() {
 			// 提取文件名（不包含路径）
 			fileName := info.Name()
@@ -45,7 +50,15 @@ func main() {
 			baseName := filepath.Base(fileName)
 			ext := filepath.Ext(baseName)
 			cleanFileName := baseName[:len(baseName)-len(ext)]
-			thumbFilepath := filepath.Join(currentDir, cleanFileName+"_thumb"+ext)
+
+			thumbDir := filepath.Join(currentDir, "compress_file")
+			thumbFilepath := filepath.Join(thumbDir, cleanFileName+"_thumb"+ext)
+
+			// 检查并创建 compress_file 文件夹
+			if err := os.MkdirAll(thumbDir, os.ModePerm); err != nil {
+				fmt.Printf("Failed to create directory %s: %v\n", thumbDir, err)
+				return err
+			}
 
 			// 调用 compress 函数压缩文件
 			if err := CompressImage(path, thumbFilepath, 50); err != nil {

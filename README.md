@@ -2,7 +2,7 @@
 
 ## 简介
 
-这是一个简单的 Go 语言编写的图片压缩工具。它可以扫描指定目录或当前目录中的所有图片文件，进行图片压缩,图片压缩默认名称为xxx_thumb.jpg/xxx_thumb.png/xxxx_thumb。
+这是一个简单的 Go 语言编写的图片压缩工具。它可以扫描指定目录或当前目录中的所有图片文件，进行图片压缩,图片压缩默认名称为xxx_thumb.jpg/xxx_thumb.png/xxxx_thumb,输出在当前目录compress_file文件夹下。
 
 ## 安装
 
