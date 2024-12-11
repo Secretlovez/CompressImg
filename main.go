@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func main() {
@@ -51,6 +52,9 @@ func main() {
 			ext := filepath.Ext(baseName)
 			cleanFileName := baseName[:len(baseName)-len(ext)]
 
+			if strings.HasSuffix(cleanFileName, "_thumb") {
+				return nil
+			}
 			thumbDir := filepath.Join(currentDir, "compress_file")
 			thumbFilepath := filepath.Join(thumbDir, cleanFileName+"_thumb"+ext)
 
